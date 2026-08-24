@@ -2,8 +2,8 @@
 
 A hands-free grocery list manager you talk to. Built for the Unthinkable Solutions technical assessment.
 
-**Live app:** [add your GitHub Pages URL here]
-**Repository:** [add your GitHub repo URL here]
+**Live app:** https://pantrypalvoice.netlify.app/
+**Repository:** https://github.com/lavanyakarna/Pantrypal
 
 ---
 
