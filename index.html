@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pantry — Your hands-free grocery companion</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500..700;1,9..144,500..700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 2h8v4l2 3v11a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V9l2-3V2Z" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M6 9h12" stroke="white" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+    </span>
+    <span class="brand-name">Pantry</span>
+  </div>
+
+  <div class="language-field">
+    <label for="language-select" class="language-label">Speak in</label>
+    <select id="language-select" class="language-select">
+      <option value="en-US">English</option>
+      <option value="hi-IN">Hindi</option>
+      <option value="es-ES">Spanish</option>
+      <option value="fr-FR">French</option>
+    </select>
+  </div>
+</header>
+
+<div id="error-banner" class="error-banner" role="alert" style="display:none;"></div>
+
+<main class="app-main">
+
+  <section class="voice-hero" aria-label="Voice control">
+    <div class="hero-stage">
+      <span class="hero-blob hero-blob-a" aria-hidden="true"></span>
+      <span class="hero-blob-ring" aria-hidden="true"></span>
+      <span class="hero-blob hero-blob-b" aria-hidden="true"></span>
+
+      <div class="hero-content">
+        <h1 class="hero-heading">What do we need?</h1>
+        <p class="hero-sub">Tap the seal and talk — hands stay free.</p>
+
+        <div class="voice-console">
+          <div class="mic-stage">
+            <span class="mic-ring mic-ring-outer" aria-hidden="true"></span>
+            <span class="mic-ring mic-ring-inner" aria-hidden="true"></span>
+            <button id="mic-button" type="button" aria-label="Tap to speak to Pantry">
+              <span class="mic-seal">
+                <svg class="mic-icon" viewBox="0 0 24 24" width="26" height="26" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <rect x="9" y="3" width="6" height="12" rx="3" stroke="currentColor" stroke-width="1.8"/>
+                  <path d="M5 11a7 7 0 0 0 14 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                  <path d="M12 18v3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                  <path d="M8.5 21h7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                </svg>
+              </span>
+              <span class="mic-bars" aria-hidden="true">
+                <span class="mic-bar"></span>
+                <span class="mic-bar"></span>
+                <span class="mic-bar"></span>
+                <span class="mic-bar"></span>
+              </span>
+            </button>
+          </div>
+
+          <p id="mic-status" class="mic-status">Idle</p>
+        </div>
+      </div>
+
+      <svg class="hero-edge" viewBox="0 0 600 24" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 12 C 100 0, 200 24, 300 10 C 400 -4, 500 20, 600 8 L600 24 L0 24 Z" style="fill:var(--cream);"/>
+      </svg>
+    </div>
+
+    <div class="transcript-area">
+      <span class="transcript-eyebrow">I heard</span>
+      <p id="transcript-display" class="transcript-display" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <div class="app-body">
+
+    <section class="list-section" aria-label="Your shopping list">
+      <div class="section-header">
+        <h2 class="section-title">Your list</h2>
+        <button id="undo-button" type="button" class="undo-button">
+          <span class="undo-icon" aria-hidden="true">↶</span> Undo
+        </button>
+      </div>
+      <div id="shopping-list" class="shopping-list"></div>
+    </section>
+
+    <aside class="side-rail">
+
+      <section class="rail-panel" aria-label="Search results">
+        <h2 class="rail-title">Search results</h2>
+        <div id="search-results" class="search-results"></div>
+      </section>
+
+      <section class="rail-panel" aria-label="Your usual items">
+        <h2 class="rail-title">Your usuals</h2>
+        <div id="favorites-panel" class="favorites-panel"></div>
+      </section>
+
+      <section class="rail-panel" aria-label="Smart suggestions">
+        <h2 class="rail-title">Suggestions</h2>
+        <p class="rail-hint">Say "yes" or "no" to respond</p>
+        <div id="suggestions-panel" class="suggestions-panel"></div>
+      </section>
+
+    </aside>
+
+  </div>
+
+</main>
+
+<script src="data.js"></script>
+<script src="parser.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
