@@ -136,6 +136,16 @@ Without an API key the app runs fine on the regex parser. To enable AI locally, 
 
 > ⚠️ **Clear `LOCAL_KEY` before committing. In production the key comes from Netlify, never from source.**
 
+### Testing
+
+```bash
+node --test parser.test.mjs
+```
+
+30 tests, no dependencies, no network. The suite loads the real `data.js` and `parser.js` into a sandboxed VM with a `fetch` that always rejects, so it exercises the shipped code and proves the regex tier works with the AI layer completely unavailable.
+
+Coverage: add / remove / search intents, quantity and unit extraction, number words, price ceilings in `rs` and `INR`, recipe and substitute detection, command-shape contract, Devanagari and romanised Hindi, and malformed input.
+
 ### Deploying
 
 Push to **`main`**. Netlify builds and publishes automatically. The only required configuration is the **`GROQ_API_KEY`** environment variable in the Netlify dashboard.
@@ -155,7 +165,6 @@ Push to **`main`**. Netlify builds and publishes automatically. The only require
 
 ## Known limitations
 
-* **No test suite yet** — the regex parser is the obvious first target
 * **No backend** — localStorage means no cross-device sync or multi-user support
 * **Web Speech API is Chrome-centric** — degraded on Safari and Firefox
 * **Static catalog** — no live inventory or real-time pricing
@@ -163,7 +172,7 @@ Push to **`main`**. Netlify builds and publishes automatically. The only require
 
 ### Next
 
-Parser test suite → user accounts with a real backend → live grocery pricing API.
+User accounts with a real backend -> live grocery pricing API -> test coverage for the AI layer.
 
 ---
 
